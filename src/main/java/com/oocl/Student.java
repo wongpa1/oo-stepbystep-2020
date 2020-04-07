@@ -20,4 +20,9 @@ public class Student extends Person {
         else
             return String.format("My name is %s. I am %s years old. I am a student of class %s. Coding for the glory of OOCL.",this.getName(),this.getAge(),klassNumber);
     }
+
+    public String studentWelcomeNewStudent(String klassnumber, Student student){
+        return (this.introduce() + String.format(" Welcome %s join Class %s.",student.getName(),klassnumber));
+    }
+
 }

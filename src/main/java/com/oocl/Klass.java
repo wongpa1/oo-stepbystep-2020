@@ -43,11 +43,20 @@ public class Klass {
     }
 
     public String assignStudentLeader(Student student){
+        String Welcoming = new String();
+
         if(studentList.contains(student)) {
             this.studentLeader = student;
 
             if (this.teacher != null) {
-                return this.teacher.welcomeStudentLeader(this.klassnumber, student);
+                Welcoming = this.teacher.welcomeStudentLeader(this.klassnumber, student);
+            }
+            if (!this.studentList.isEmpty()){
+                for (int index = 0; index < this.studentList.size(); index++) {
+                    if(this.studentList.get(index)!=student) {
+                        Welcoming += "\n" + this.studentList.get(index).studentWelcomeNewStudent(this.klassnumber, student);
+                    }
+                }
             }
         }
         return null;
