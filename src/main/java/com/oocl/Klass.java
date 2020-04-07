@@ -66,7 +66,7 @@ public class Klass {
             if (!this.studentList.isEmpty()){
                 for (int index = 0; index < this.studentList.size(); index++) {
                     if(this.studentList.get(index)!=student) {
-                        Welcoming += "\n" + this.studentList.get(index).studentWelcomeNewStudent(this.klassnumber, student);
+                        Welcoming += this.studentList.get(index).studentWelcomeStudentLeader(this.klassnumber, student);
                     }
                 }
             }
