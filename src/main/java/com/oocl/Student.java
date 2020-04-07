@@ -2,7 +2,7 @@ package com.oocl;
 
 public class Student extends Person {
 
-    private String klassNumber;
+    private String klassNumber = new String();
 
     public String getKlassNumber() {
         return klassNumber;
@@ -14,9 +14,10 @@ public class Student extends Person {
 
     public String introduce(){
 
-        if(klassNumber.isEmpty()){
+        if(this.klassNumber.isEmpty()){
             return String.format("My name is %s. I am %s years old. Coding for the glory of OOCL.",this.getName(),this.getAge());
         }
-        return String.format("My name is %s. I am %s years old. I am a student of class %s. Coding for the glory of OOCL.",this.getName(),this.getAge(),klassNumber);
+        else
+            return String.format("My name is %s. I am %s years old. I am a student of class %s. Coding for the glory of OOCL.",this.getName(),this.getAge(),klassNumber);
     }
 }
