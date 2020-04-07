@@ -3,7 +3,9 @@ package com.oocl;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PersonTest {
+import static org.junit.Assert.*;
+
+public class Q1 {
     @Test
     public void should_return_correct_personIntroduce() {
         Person Tom = new Person();

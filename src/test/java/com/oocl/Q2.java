@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class StudentTest {
+public class Q2 {
     @Test
     public void should_return_correct_studentIntroduce() {
         Student Tom = new Student();
