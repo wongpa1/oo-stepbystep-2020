@@ -42,10 +42,15 @@ public class Klass {
         return null;
     }
 
-    public void assignStudentLeader(Student student){
+    public String assignStudentLeader(Student student){
         if(studentList.contains(student)) {
             this.studentLeader = student;
+
+            if (this.teacher != null) {
+                return this.teacher.welcomeStudentLeader(this.klassnumber, student);
+            }
         }
+        return null;
     }
 
     public void assignTeacherToKlass(Teacher teacher){
