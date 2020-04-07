@@ -13,6 +13,5 @@ public class Q4 {
         Tom.setClassnumber("2");
         Tom.setAge("18");
         Assert.assertEquals(" My name is Tom. I am 18 years old. I am a student of class 2. Coding for the glory of OOCL.",Tom.introduce());
-
     }
 }
