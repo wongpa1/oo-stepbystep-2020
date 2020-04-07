@@ -7,7 +7,12 @@ public class Klass {
 
     private String klassnumber;
     private List<Student> studentList = new ArrayList<Student>();
-    private Student studentLeader;
+    private Student studentLeader = new Student();
+    private Teacher teacher = new Teacher();
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
     public List<Student> getStudentList() {
         return studentList;
@@ -36,5 +41,13 @@ public class Klass {
         if(studentList.contains(student)){
             this.studentLeader = student;
         }
+    }
+
+    public void assignTeacherToKlass(Teacher teacher){
+        if(this.teacher != null){
+            this.teacher.dropKlassnumber(this.klassnumber);
+        }
+        this.teacher = teacher;
+        teacher.addKlassnumber(this.klassnumber);
     }
 }
