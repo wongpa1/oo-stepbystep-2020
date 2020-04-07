@@ -8,7 +8,7 @@ public class Klass {
     private String klassnumber;
     private List<Student> studentList = new ArrayList<Student>();
     private Student studentLeader = new Student();
-    private Teacher teacher = new Teacher();
+    private Teacher teacher;
 
     public Teacher getTeacher() {
         return teacher;
@@ -31,18 +31,30 @@ public class Klass {
     }
 
     public String assignStudentToKlass(Student newStudent){
+
+        String Welcoming = new String();
+
         if(newStudent.getKlassNumber().isEmpty()){
             newStudent.setKlassNumber(this.klassnumber);
             this.studentList.add(newStudent);
 
             if (this.teacher != null) {
-                return this.teacher.welcomeNewStudent(this.klassnumber, newStudent);
+                Welcoming = this.teacher.welcomeNewStudent(this.klassnumber, newStudent);
             }
+            if (!this.studentList.isEmpty()){
+                for (int index = 0; index < this.studentList.size(); index++) {
+                    if(this.studentList.get(index)!=newStudent) {
+                        Welcoming += this.studentList.get(index).studentWelcomeNewStudent(this.klassnumber, newStudent);
+                    }
+                }
+            }
+            return Welcoming;
         }
         return null;
     }
 
     public String assignStudentLeader(Student student){
+
         String Welcoming = new String();
 
         if(studentList.contains(student)) {
@@ -58,6 +70,7 @@ public class Klass {
                     }
                 }
             }
+            return Welcoming;
         }
         return null;
     }
