@@ -30,15 +30,20 @@ public class Klass {
         this.klassnumber = klassnumber;
     }
 
-    public void assignStudentToKlass(Student newStudent){
+    public String assignStudentToKlass(Student newStudent){
         if(newStudent.getKlassNumber().isEmpty()){
             newStudent.setKlassNumber(this.klassnumber);
             this.studentList.add(newStudent);
+
+            if (this.teacher != null) {
+                return this.teacher.welcomeNewStudent(this.klassnumber, newStudent);
+            }
         }
+        return null;
     }
 
     public void assignStudentLeader(Student student){
-        if(studentList.contains(student)){
+        if(studentList.contains(student)) {
             this.studentLeader = student;
         }
     }

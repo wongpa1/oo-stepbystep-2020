@@ -26,4 +26,8 @@ public class Teacher extends Person{
             this.klassList.remove(klassnumber);
         }
     }
+
+    public String welcomeNewStudent(String klassnumber, Student student){
+        return (this.introduce() + String.format(" Welcome %s join Class %s.",student.getName(),klassnumber));
+    }
 }
