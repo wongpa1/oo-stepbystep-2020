@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 
 public class TeacherTest {
     @Test
-    public void name() {
-        Teacher Woody = new Teacher();
-        Woody.setName("Woody");
-        Woody.setAge("30");
-        Assert.assertEquals("My name is Woody. I am 30 years old. Teaching for the future of world.",Woody.introduce());
+    public void should_return_correct_teacherIntroduce() {
+
+        Teacher Tom = new Teacher();
+        Tom.setName("Tom");
+        Tom.setAge("18");
+        Assert.assertEquals("My name is Tom. I am 18 years old. Teaching for the future of world.",Tom.introduce());
     }
 }
