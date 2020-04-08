@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Klass {
 
-    private String klassnumber;
+    private String klassNumber;
     private List<Student> studentList = new ArrayList<Student>();
     private Student studentLeader = new Student();
     private Teacher teacher;
@@ -22,64 +22,65 @@ public class Klass {
         return studentLeader;
     }
 
-    public String getKlassnumber() {
-        return klassnumber;
+    public String getKlassNumber() {
+        return klassNumber;
     }
 
-    public void setKlassnumber(String klassnumber) {
-        this.klassnumber = klassnumber;
+    public void setKlassNumber(String klassNumber) {
+        this.klassNumber = klassNumber;
     }
 
-    public String assignStudentToKlass(Student newStudent){
+    public String assignStudentToKlass(Student newStudent) {
 
-        String Welcoming = new String();
+        StringBuilder welcoming = new StringBuilder();
 
-        if(newStudent.getKlassNumber().isEmpty()){
-            newStudent.setKlassNumber(this.klassnumber);
+        if (newStudent.getKlassNumber().isEmpty()) {
+            newStudent.setKlassNumber(this.klassNumber);
             this.studentList.add(newStudent);
 
             if (this.teacher != null) {
-                Welcoming = this.teacher.welcomeNewStudent(this.klassnumber, newStudent);
+                welcoming = new StringBuilder(this.teacher.welcomeNewStudent(this.klassNumber, newStudent));
             }
-            if (!this.studentList.isEmpty()){
-                for (int index = 0; index < this.studentList.size(); index++) {
-                    if(this.studentList.get(index)!=newStudent) {
-                        Welcoming += this.studentList.get(index).studentWelcomeNewStudent(this.klassnumber, newStudent);
+            if (!this.studentList.isEmpty()) {
+                for (Student student : this.studentList) {
+                    if (student != newStudent) {
+                        welcoming.append(student.studentWelcomeNewStudent(this.klassNumber, newStudent));
                     }
                 }
             }
-            return Welcoming;
+            return welcoming.toString();
         }
         return null;
     }
 
-    public String assignStudentLeader(Student student){
+    public String assignStudentLeader(Student student) {
 
-        String Welcoming = new String();
+        StringBuilder welcoming = new StringBuilder();
 
-        if(studentList.contains(student)) {
+        if (studentList.contains(student)) {
             this.studentLeader = student;
 
             if (this.teacher != null) {
-                Welcoming = this.teacher.welcomeStudentLeader(this.klassnumber, student);
+                welcoming = new StringBuilder(this.teacher.welcomeStudentLeader(this.klassNumber, student));
             }
-            if (!this.studentList.isEmpty()){
-                for (int index = 0; index < this.studentList.size(); index++) {
-                    if(this.studentList.get(index)!=student) {
-                        Welcoming += this.studentList.get(index).studentWelcomeStudentLeader(this.klassnumber, student);
-                    }
+            if (this.studentList.isEmpty()) {
+                return welcoming.toString();
+            }
+            for (Student value : this.studentList) {
+                if (value != student) {
+                    welcoming.append(value.studentWelcomeStudentLeader(this.klassNumber, student));
                 }
             }
-            return Welcoming;
+            return welcoming.toString();
         }
         return null;
     }
 
-    public void assignTeacherToKlass(Teacher teacher){
-        if(this.teacher != null){
-            this.teacher.dropKlassnumber(this.klassnumber);
+    public void assignTeacherToKlass(Teacher teacher) {
+        if (this.teacher != null) {
+            this.teacher.dropKlassnumber(this.klassNumber);
         }
         this.teacher = teacher;
-        teacher.addKlassnumber(this.klassnumber);
+        teacher.addKlassnumber(this.klassNumber);
     }
 }

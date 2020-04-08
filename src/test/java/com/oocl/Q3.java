@@ -9,9 +9,9 @@ public class Q3 {
     @Test
     public void should_return_correct_teacherIntroduce() {
 
-        Teacher Tom = new Teacher();
-        Tom.setName("Tom");
-        Tom.setAge("18");
-        Assert.assertEquals("My name is Tom. I am 18 years old. Teaching for the future of world.",Tom.introduce());
+        Teacher tom = new Teacher();
+        tom.setName("Tom");
+        tom.setAge("18");
+        Assert.assertEquals("My name is Tom. I am 18 years old. Teaching for the future of world.", tom.introduce());
     }
 }
